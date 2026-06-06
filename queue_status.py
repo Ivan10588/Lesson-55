@@ -15,6 +15,7 @@ def update_queue_log(file_path, remaining):
         json.dump({'remaining': remaining}, f, ensure_ascii=False, indent=4)
     print(f"Лог обновлён. Осталось обработать страниц: {remaining}")
 
+
 def main() -> None:
     total_pages: int = 100
     processed_pages: int = 85
