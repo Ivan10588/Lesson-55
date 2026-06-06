@@ -2,6 +2,8 @@ import json
 from pathlib import Path
 from typing import Union
 
+FilePath = Union[str, Path]
+
 def update_queue_log(file_path, remaining):
     """Обновляет JSON-лог с количеством оставшихся страниц и выводит статус в консоль.
 
