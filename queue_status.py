@@ -16,16 +16,16 @@ def update_queue_log(file_path, remaining):
     print(f"Лог обновлён. Осталось обработать страниц: {remaining}")
 
 def main() -> None:
-    """Основная функция расчёта и отображения статуса очереди.
-
-    Вычисляет оставшееся количество страниц, обновляет лог и выводит результат.
-    """
-    total = 100
-    processed = 85
+    total_pages: int = 100
+    processed_pages: int = 85
     remaining_pages: int = total_pages - processed_pages
     log_file_path: Path = Path("queue_status.json")
 
-    update_queue_log(log_file_path, remaining_pages)
+    should_write_log = False
+
+    if should_write_log:
+        update_queue_log(log_file_path, remaining_pages)
+
     print(f"(main) Осталось обработать страниц: {remaining_pages}")
 
 if __name__ == "__main__":
