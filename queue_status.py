@@ -12,6 +12,11 @@ def update_queue_log(file_path, remaining):
     print(f"Log updated, remaining: {remaining}")
 
 def main():
+    """Демонстрирует расчёт и обновление статуса очереди в лог-файле.
+
+    Вычисляет оставшееся количество страниц на основе жёстко заданных значений,
+    вызывает update_queue_log для записи результата и вывода в консоль.
+    """
     total = 100
     processed = 85
     remaining = total - processed
