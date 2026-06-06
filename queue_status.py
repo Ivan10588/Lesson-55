@@ -8,24 +8,25 @@ def update_queue_log(file_path, remaining):
     """Обновляет JSON-лог с количеством оставшихся страниц и выводит статус в консоль.
 
     Args:
-        file_path (str): Путь к файлу лога (JSON).
+        file_path (str): Путь к файлу лога (JSON), может быть строкой или Path.
         remaining (int): Количество оставшихся страниц в очереди.
     """
-    with open(file_path, 'w') as f:
-        json.dump({'remaining': remaining}, f)
-    print(f"Log updated, remaining: {remaining}")
+    with open(file_path, 'w', encoding="utf-8") as f:
+        json.dump({'remaining': remaining}, f, ensure_ascii=False, indent=4)
+    print(f"Лог обновлён. Осталось обработать страниц: {remaining}")
 
-def main():
-    """Демонстрирует расчёт и обновление статуса очереди в лог-файле.
+def main() -> None:
+    """Основная функция расчёта и отображения статуса очереди.
 
-    Вычисляет оставшееся количество страниц на основе жёстко заданных значений,
-    вызывает update_queue_log для записи результата и вывода в консоль.
+    Вычисляет оставшееся количество страниц, обновляет лог и выводит результат.
     """
     total = 100
     processed = 85
-    remaining = total - processed
-    log_file = "queue_status.json"
-    update_queue_log(log_file, remaining)
+    remaining_pages: int = total_pages - processed_pages
+    log_file_path: Path = Path("queue_status.json")
+
+    update_queue_log(log_file_path, remaining_pages)
+    print(f"(main) Осталось обработать страниц: {remaining_pages}")
 
 if __name__ == "__main__":
     main()
